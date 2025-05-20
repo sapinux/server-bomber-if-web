@@ -10,14 +10,17 @@ wss.on("connection", ws => {
 
     // quando o cliente nos envia uma mensagem
     ws.on("message", data => {
-        console.log(`Client has sent us: ${data}`);
+        console.log(`O cliente nos enviou: ${data}`);
+
     })
     // lidar com o que fazer quando os clientes se desconectam do servidor
-    ws.on("close", () => { })
+    ws.on("close", () => { 
+        console.log("Player desconectou!");
+    })
 
     // tratamento de erro de conexão do cliente
     ws.onerror = function () {
-        console.log("Some Error occurred");
+        console.log("Ocorreu algum erro");
     }
 });
-console.log("The WebSocket server is running");
+console.log("O servidor WebSocket está em execução");
