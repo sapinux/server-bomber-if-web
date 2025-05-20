@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sapinux/server-bomber-if-web/issues"
   },
-  "homepage": "https://github.com/sapinux/server-bomber-if-web#readme"
+  "homepage": "https://github.com/sapinux/server-bomber-if-web#readme",
+  "dependencies": {
+    "ws": "^8.18.2"
+  }
 }
