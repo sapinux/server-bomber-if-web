@@ -20,9 +20,9 @@ wss.on("connection", ws => {
     ws.on("message", data => {
         console.log(`O cliente nos enviou: ${data}`);
         var data_cliente = JSON.parse(data);        //decodifica a mensagem recebida do cliente
-        var event_name = data_cliente.event_name;
+        
 
-        switch (event_name) {
+        switch (data_cliente.event_name) {
             case "create_player_request":
                 var player = {
                     id: cliente_id,
@@ -36,6 +36,14 @@ wss.on("connection", ws => {
                 console.log(players);   //depuração
 
                 //agora temos que dizer ao cliente que sim, de fato, nós o criamos
+                ws.send(
+                    JSON.stringify({
+                        event_name: "Você foi criado!",
+                        id: players[players.length - 1].id,
+                    }
+
+                    )
+                )
 
 
                 break;
