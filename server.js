@@ -67,16 +67,16 @@ wss.on("connection", ws => {
                     for (id = 0; id < players[sala].length; id ++) {        //faz um loop nos players
                         if (ws == players[sala][id].socket_object) {        //verifica qual player desconectou
                     
-                            console.log(players[sala][id].id);              //depuração
-                            console.log("sala: " + sala + " id: " + id);    //depuracao
+                            console.log("sala: " + players[sala][id].sala + " id: " + players[sala][id].id);    //depuracao
 
-                            players[sala][id].x = data_cliente.x;
-                            players[sala][id].y = data_cliente.y;
+                            if ("x" in data_cliente) players[sala][id].x = data_cliente.x;
+                            if ("y" in data_cliente) players[sala][id].y = data_cliente.y;
+                            console.log("X: " + players[sala][id].x + " Y: " + players[sala][id].y);    //depuração
                             break; 
                         }
                     }
                 }    
-            console.table(players[sala][id]);
+            
             break;
         }
 
@@ -90,7 +90,7 @@ wss.on("connection", ws => {
                 if (ws == players[sala][id].socket_object) {        //verifica qual player desconectou
                     
                     console.log(players[sala][id].id);              //depuração
-                    console.log("sala: " + sala + " id: " + id);    //depuracao
+                    console.log("sala: " + players[sala][id].sala + " id: " + players[sala][id].id);    //depuracao
 
                     players[sala].splice(id, 1,);                   //elimina o player da matriz
                     if (players[sala].length == 0)                  //se não existir player na sala
